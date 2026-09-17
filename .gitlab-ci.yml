@@ -12,14 +12,18 @@ validate:html:
 build:
   stage: build
   script:
-    - echo "Building application"
+    - echo "Building website"
 
 test:
   stage: test
   script:
-    - echo "Running tests"
+    - echo "Testing website"
 
-deploy:
+pages:
   stage: deploy
   script:
-    - echo "Deploying application"
+    - mkdir public
+    - cp -r *.html *.css *.js public/
+  pages: true
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
