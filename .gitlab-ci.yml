@@ -1,0 +1,25 @@
+stages:
+  - validate
+  - build
+  - test
+  - deploy
+
+validate:html:
+  stage: validate
+  script:
+    - echo "Validating HTML"
+
+build:
+  stage: build
+  script:
+    - echo "Building application"
+
+test:
+  stage: test
+  script:
+    - echo "Running tests"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying application"
