@@ -75,14 +75,6 @@ The main goal of this project is to create a simple web-based application for ma
 * Authentication logic
 * Git and GitHub workflow
 
-## 📸 Screenshots
-
-Add screenshots of your project here:
-
-```text
-Coming soon...
-```
-
 ## 🔮 Future Improvements
 
 * [ ] Add backend integration
@@ -101,6 +93,20 @@ Coming soon...
 
 GitHub: [@almas63711](https://github.com/almas63711)
 
+## 🌟 Project Vision
+
+This project is being developed as part of my journey in **web development and software engineering**. The goal is to continuously improve the application by adding better functionality, security, performance, and user experience.
+
+I plan to gradually evolve this project from a basic frontend application into a more complete and production-ready expense management system with backend services, database integration, authentication, analytics, and cloud deployment.
+
+## 🤝 Contribution
+
+Suggestions, improvements, and feedback are always welcome. If you have an idea that can make the project better, feel free to open an issue or contribute to the repository.
+
 ## ⭐ Support
 
-If you find this project useful, consider giving it a ⭐ on GitHub!
+If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+
+**Thank you for checking out the Expense Tracker! 🚀**
+
+> Built with HTML, CSS, JavaScript, and a continuous desire to learn and improve.
