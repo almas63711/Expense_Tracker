@@ -1,122 +1,1007 @@
-```css
-/* Basic page setup */
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+
+    --background: #f5f7fb;
+    --card: #ffffff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --green: #10b981;
+    --red: #ef4444;
+    --orange: #f59e0b;
+
+    --shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+
+    --radius: 18px;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    color: #222;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        linear-gradient(135deg,
+            #f8fafc 0%,
+            #eef2ff 100%);
+
+    color: var(--text);
+
+    min-height: 100vh;
 }
 
 
-/* Header */
+/* =====================================================
+   HEADER
+===================================================== */
 
-header {
-    background-color: #1f2937;
+.header {
+    width: 100%;
+
+    padding: 28px 7%;
+
+    background:
+        linear-gradient(135deg,
+            #4f46e5,
+            #6366f1,
+            #8b5cf6);
+
     color: white;
-    text-align: center;
-    padding: 30px;
-}
 
-header h1 {
-    margin-bottom: 10px;
-}
+    display: flex;
 
+    justify-content: space-between;
 
-/* Main */
+    align-items: center;
 
-main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
+    box-shadow:
+        0 8px 25px rgba(79, 70, 229, 0.25);
 }
 
 
-/* Summary cards */
+.header h1 {
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+.header p {
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container {
+    width: min(1200px, 92%);
+
+    margin: 35px auto 60px;
+}
+
+
+/* =====================================================
+   SUMMARY CARDS
+===================================================== */
 
 .summary {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+
+    margin-bottom: 25px;
 }
+
+
+.summary-card {
+    background: var(--card);
+
+    padding: 25px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid rgba(229, 231, 235, 0.8);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.summary-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+
+.summary-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: var(--primary);
+}
+
+
+.summary-card:nth-child(2)::before {
+    background: var(--green);
+}
+
+
+.summary-card:nth-child(3)::before {
+    background: var(--red);
+}
+
+
+.summary-card h3 {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+.summary-card p {
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+/* =====================================================
+   GENERAL CARD
+===================================================== */
 
 .card {
-    background-color: white;
-    padding: 25px;
-    flex: 1;
-    border-radius: 10px;
+    background: var(--card);
+
+    border-radius: var(--radius);
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    box-shadow: var(--shadow);
+
+    border:
+        1px solid rgba(229, 231, 235, 0.8);
 }
 
-.card h3 {
-    margin-bottom: 10px;
+
+.card h2 {
+    font-size: 21px;
+
+    margin-bottom: 22px;
+
+    font-weight: 750;
 }
 
-.card p {
-    font-size: 25px;
-    font-weight: bold;
+
+/* =====================================================
+   TRANSACTION TYPE
+===================================================== */
+
+.type-section {
+    margin-bottom: 22px;
 }
 
 
-/* Expense form */
+.type-section label {
+    display: block;
 
-.expense-form {
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 9px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--text);
 }
 
-.expense-form h2 {
-    margin-bottom: 20px;
-}
 
-form {
-    display: flex;
-    flex-direction: column;
+.type-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
     gap: 10px;
 }
 
+
+.type-btn {
+    border: 1px solid var(--border);
+
+    background: #f9fafb;
+
+    color: var(--muted);
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        all 0.2s ease;
+}
+
+
+.type-btn:hover {
+    border-color: var(--primary);
+
+    color: var(--primary);
+}
+
+
+.type-btn.active {
+    background:
+        linear-gradient(135deg,
+            var(--primary),
+            #8b5cf6);
+
+    color: white;
+
+    border-color:
+        transparent;
+
+    box-shadow:
+        0 6px 15px rgba(99, 102, 241, 0.25);
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+}
+
+
 input,
 select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: #fafafa;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
-button {
-    padding: 12px;
+
+input:focus,
+select:focus {
+    background: white;
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* =====================================================
+   PRIMARY BUTTON
+===================================================== */
+
+.primary-btn {
+    width: 100%;
+
     border: none;
-    border-radius: 6px;
-    background-color: #2563eb;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(135deg,
+            var(--primary),
+            #8b5cf6);
+
     color: white;
-    font-size: 16px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
-/* Transactions */
+.primary-btn:hover {
+    transform: translateY(-2px);
 
-.transactions {
-    background-color: white;
-    padding: 25px;
+    box-shadow:
+        0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   DANGER BUTTON
+===================================================== */
+
+.danger-btn {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    padding: 11px 17px;
+
     border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        background 0.2s ease;
 }
 
-.transactions h2 {
+
+.danger-btn:hover {
+    background:
+        rgba(239, 68, 68, 0.85);
+}
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+.budget-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+
+.budget-info>div {
+    background: #f8fafc;
+
+    padding: 18px;
+
+    border-radius: 13px;
+
+    border: 1px solid var(--border);
+}
+
+
+.budget-info span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+}
+
+
+.budget-info strong {
+    font-size: 19px;
+}
+
+
+.progress-container {
+    width: 100%;
+
+    height: 10px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    margin-top: 22px;
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+    height: 100%;
+
+    width: 0;
+
+    background:
+        linear-gradient(90deg,
+            var(--primary),
+            #8b5cf6);
+
+    border-radius: 20px;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+#budgetMessage {
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   SPENDING OVERVIEW
+===================================================== */
+
+.spending-item {
     margin-bottom: 20px;
 }
 
-.transaction {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
+
+.spending-item:last-child {
+    margin-bottom: 0;
 }
 
-```
+
+.spending-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.spending-header span:last-child {
+    color: var(--muted);
+}
+
+
+.bar-container {
+    width: 100%;
+
+    height: 9px;
+
+    background: #eef2f7;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.spending-bar {
+    height: 100%;
+
+    width: 0;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(90deg,
+            #6366f1,
+            #8b5cf6);
+
+    transition:
+        width 0.5s ease;
+}
+
+
+/* =====================================================
+   TRANSACTIONS HEADER
+===================================================== */
+
+.transaction-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.transaction-header h2 {
+    margin-bottom: 0;
+}
+
+
+.transaction-controls {
+    display: flex;
+
+    gap: 10px;
+
+    width: 55%;
+}
+
+
+.transaction-controls input,
+.transaction-controls select {
+    background: #f9fafb;
+}
+
+
+/* =====================================================
+   TRANSACTION LIST
+===================================================== */
+
+#transactionList {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.transaction-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: #fff;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.transaction-item:hover {
+    transform: translateX(4px);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =====================================================
+   TRANSACTION ICON
+===================================================== */
+
+.transaction-icon {
+    width: 46px;
+
+    height: 46px;
+
+    min-width: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 12px;
+
+    font-size: 21px;
+}
+
+
+/* =====================================================
+   TRANSACTION INFO
+===================================================== */
+
+.transaction-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.transaction-info h3 {
+    font-size: 15px;
+
+    margin-bottom: 5px;
+
+    font-weight: 700;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.transaction-info p {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+.transaction-info small {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    padding: 3px 8px;
+
+    border-radius: 20px;
+
+    background: #f3f4f6;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   TRANSACTION RIGHT
+===================================================== */
+
+.transaction-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.transaction-right strong {
+    font-size: 15px;
+
+    white-space: nowrap;
+}
+
+
+.transaction-right strong.income {
+    color: var(--green);
+}
+
+
+.transaction-right strong.expense {
+    color: var(--red);
+}
+
+
+/* =====================================================
+   DELETE BUTTON
+===================================================== */
+
+.delete-btn {
+    border: none;
+
+    background: #fef2f2;
+
+    color: var(--red);
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.delete-btn:hover {
+    background: #fee2e2;
+}
+
+
+/* =====================================================
+   EMPTY MESSAGE
+===================================================== */
+
+.empty-message {
+    text-align: center;
+
+    padding: 35px 20px;
+
+    color: var(--muted);
+
+    background: #f9fafb;
+
+    border-radius: 14px;
+
+    border: 1px dashed var(--border);
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #c7d2fe;
+
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a5b4fc;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .header {
+        padding: 25px 5%;
+    }
+
+
+    .container {
+        width: 94%;
+    }
+
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+
+    .transaction-header {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .transaction-controls {
+        width: 100%;
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+
+    .header .danger-btn {
+        width: 100%;
+    }
+
+
+    .container {
+        width: 94%;
+
+        margin-top: 20px;
+    }
+
+
+    .card {
+        padding: 20px;
+
+        border-radius: 15px;
+    }
+
+
+    .summary-card {
+        padding: 20px;
+    }
+
+
+    .summary-card p {
+        font-size: 26px;
+    }
+
+
+    .budget-info {
+        grid-template-columns: 1fr;
+    }
+
+
+    .transaction-controls {
+        flex-direction: column;
+    }
+
+
+    .transaction-item {
+        align-items: flex-start;
+    }
+
+
+    .transaction-right {
+        flex-direction: column;
+
+        align-items: flex-end;
+
+        gap: 8px;
+    }
+
+
+    .transaction-info {
+        min-width: 0;
+    }
+
+
+    .transaction-info h3 {
+        max-width: 150px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .type-buttons {
+        grid-template-columns: 1fr;
+    }
+
+
+    .transaction-icon {
+        width: 40px;
+
+        height: 40px;
+
+        min-width: 40px;
+
+        font-size: 18px;
+    }
+
+
+    .transaction-right strong {
+        font-size: 13px;
+    }
+
+}
